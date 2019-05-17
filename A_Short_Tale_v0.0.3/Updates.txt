@@ -1,0 +1,3 @@
+Better fullscreen method. Its cleaner and looks better.
+New input method so a player can quit whenever they like.
+Re-structured files and modules to make it easier to work with later on.
