@@ -3,34 +3,15 @@
 ############################################################
 #dream, you choose to do one of four options which will result in either carrying on as normal
 #or storing the hidden class variable if you know the specific answer!
-import os
-import ctypes.wintypes as wintypes
-from colorama import Fore
-import ctypes
-import msvcrt
-import subprocess
 import time
-import win32com.client as comclt
-
-#Auxillary scripts
-from auxscripts.fullscreen import * #To go full screen
-from auxscripts.init import * #Initialise game
-from auxscripts.MUSTFUNC import * #VERY IMPORT FUNCTIONS TO THE STORY
-from auxscripts.func import * #Useful functions
-from auxscripts.values import * #Values
+from auxscripts.init import player #Initialise game
+from auxscripts.values import choices
 
 #Functions
-from chapters.Chapter1Func import *
-from auxscripts.save import *
+from chapters.Chapter1Func import player_name, dream, take_hand
 
 def chapter1(prog):
-	
-	Class = "NOTCHOSEN"
-	p_name = "NOTCHOSEN"	
-	
-	global player
-	player = Hero(p_name, Class)
-		
+					
 	if prog <= 0:
 		#Dream
 		print("You find yourself wandering a forest, a dream")
@@ -44,14 +25,17 @@ def chapter1(prog):
 		time.sleep(1)
 		print("""\nBefore you have a chance to get up he sticks out his hand, asking you a question in a cheery voice,
 	\"What's your name mister?\"""")
-		
-		#Get player name
+				
+		#Get player name and create class
 		p_name = player_name()
 		player.name = p_name
-		
+		print("I MADE THE FUCKING HERO, HIS NAME IS {}".format(player.name))
+				
 		#Choice
 		choice = take_hand()
 		choices["Chapter1"].update({"Take Hand":choice})
 		if not choice:
 			print("\nYou really should have taken his hand... He stabs you and walks away whistling a merry tune.")
+			
+		
 	

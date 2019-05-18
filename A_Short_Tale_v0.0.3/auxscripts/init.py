@@ -1,17 +1,5 @@
 #you chose... poorly
 
-#Auxillary scripts
-from auxscripts.fullscreen import * #To go full screen
-from auxscripts.init import * #Initialise game
-from auxscripts.MUSTFUNC import * #VERY IMPORT FUNCTIONS TO THE STORY
-from auxscripts.func import * #Useful functions
-from auxscripts.values import * #Values
-
-from colorama import Fore
-import os
-
-#player classes
-
 class Hero():
 	
 	def __init__(self, name, Class):
@@ -50,3 +38,4 @@ class Hero():
 		self.inventory.append(item)
 		 
 
+player = Hero("NONAME", "NOCLASS")

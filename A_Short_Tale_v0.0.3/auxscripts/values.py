@@ -1,12 +1,5 @@
 from colorama import Fore
 
-#Auxillary scripts
-from auxscripts.fullscreen import * #To go full screen
-from auxscripts.init import * #Initialise game
-from auxscripts.MUSTFUNC import * #VERY IMPORT FUNCTIONS TO THE STORY
-from auxscripts.func import * #Useful functions
-from auxscripts.values import * #Values
-
 required = (Fore.RED + """
 Please enter a valid response""" + Fore.GREEN) #random response
 

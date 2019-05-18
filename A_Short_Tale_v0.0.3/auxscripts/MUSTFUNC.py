@@ -1,21 +1,10 @@
 from colorama import Fore
+from auxscripts.read import load #load
+from auxscripts.func import jinput #Useful functions
+from auxscripts.values import required, no
+import time, os
 
-#Auxillary scripts
-from auxscripts.fullscreen import * #To go full screen
-from auxscripts.init import * #Initialise game
-from auxscripts.MUSTFUNC import * #VERY IMPORT FUNCTIONS TO THE STORY
-from auxscripts.func import * #Useful functions
-from auxscripts.values import * #Values
-from auxscripts.save import * #save
-from auxscripts.read import * #load
-try:
-	from save import *
-except:
-	pass
-try:
-	from read import *
-except:
-	 pass
+clear = lambda: os.system('cls')
 
 def art():
 	print(Fore.GREEN)
@@ -101,7 +90,7 @@ def main():
 	jinput("Press enter key to start: ")
 	new_game = jinput("New game/load chapter? [new/load]:")
 	if new_game == "new":
-		story = 1.0
+		story_progress = 1.0
 	elif new_game == "load":
 		player, story_progress, Choices = load()
 	else:
@@ -110,7 +99,7 @@ def main():
 		print("Restarting")
 		time.sleep(1)
 		main()
-	return story
+	return story_progress
 		
 def death():
 	death = jinput ("You died, would you like to start again... or get up!?: ")
@@ -119,6 +108,7 @@ def death():
 	elif death in no:
 		quit()
 	elif death == "NOOO" or death == "get up" or death == "NO" or death == "stand up":
-		strength
-		constitution += 2 
-		hardy()
+		pass
+		#strength
+		#constitution += 2 
+		#hardy()
