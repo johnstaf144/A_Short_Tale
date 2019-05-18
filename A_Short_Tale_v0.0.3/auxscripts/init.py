@@ -10,35 +10,43 @@ from auxscripts.values import * #Values
 from colorama import Fore
 import os
 
-#player name variable
-p_name = "0"
-
 #player classes
 
-mage = 0
-warrior = 0
-berserker = 0
-assassin = 0
-yeet = 0
-hidden_class = 0
+class Hero():
+	
+	def __init__(self, name, Class):
 
-#player stats
-speed = 0
-perception = 0
-magic = 0
-strength = 0
-stealth = 0
-speech = 0
-constitution = 0
+		self.name = name
+		self.inventory = []
+		self.Class = Class
 
-#player skills for chapter 1
-pickpocket = 0
-lock_pick = 0
-self_combust = 0
-hold_breath = 0
-animal_lang = 0
-premonition = 0
-apocalypse = 0
+		self.mage = 0
+		self.warrior = 0
+		self.berserker = 0
+		self.assassin = 0
+		self.yeet = 0
+		self.hidden_class = 0
+		
+		#player stats
+		self.speed = 0
+		self.perception = 0
+		self.magic = 0
+		self.strength = 0
+		self.stealth = 0
+		self.speech = 0
+		self.constitution = 0
+		
+		#player skills for chapter 1
+		self.pickpocket = 0
+		self.lock_pick = 0
+		self.self_combust = 0
+		self.hold_breath = 0
+		self.animal_lang = 0
+		self.premonition = 0
+		self.apocalypse = 0
+		
+	def pickup(self, item):
+		
+		self.inventory.append(item)
+		 
 
-#inventory
-inventory = []

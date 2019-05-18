@@ -19,87 +19,41 @@ from auxscripts.MUSTFUNC import * #VERY IMPORT FUNCTIONS TO THE STORY
 from auxscripts.func import * #Useful functions
 from auxscripts.values import * #Values
 
-def dream():
-	print("You find yourself wandering a forest, a dream")
-	dream_choice_1 = jinput("Do you: \nA: Run \nB: stay \n")
-	if dream_choice_1 in answer_A:
-		awake()
-	elif dream_choice_1 in answer_B:
-		jinput("000")
-	elif dream_choice_1 == "wake up":
-		global hidden_class
-		hidden_class += 1
-		print("")
-		print("You realise")
-		awake()
-	else:
-		print(required)
-		dream()
+#Functions
+from chapters.Chapter1Func import *
+from auxscripts.save import *
 
-
-def awake():
-	print(" ")
-	print("""You wake up to the sounds of birds chirping in the trees around you. Slowly, as your blurry
-vision begins to focus you realise a small boy is standing over you, a wide grin on his face.""")
-	time.sleep(1)
-	print(""" 
-Before you have a chance to get up he sticks out his hand, asking you a question in a cheery voice,
-\"What's your name mister?\"""")
-	player_name()
+def chapter1(prog):
 	
-
-def player_name():
-	global p_name
-	print("")
-	p_name = jinput(Fore.CYAN + "Choose a name: " + Fore.GREEN)
-	print(" ")
-	certain = jinput(Fore.CYAN + "Are you sure?: " + Fore.GREEN)
-	if certain in yes:
-		print(" ")
-		print ("\"Well, hi " + p_name + "! My name is Iri! Saw ya lying over and thought it best not to wake ya!... Want a hand up?\"")
-		choice_1()
-	elif certain in no:
-		player_name()
-	else:
-		print(required)
-		player_name()
-
-#decision to take the boy's hand
-def choice_1():
-	print(" ")
-	hand = jinput(Fore.CYAN + "Do you take his hand?: " + Fore.GREEN)
-	if hand in yes:
-		hand_yes()
-	elif  hand in no:
-		hand_no()
-	else:
-		print(required)
-		choice_1()
-
-def hand_yes():
-	print(" ")
-	print("I love you!!!")
-	quit()
-
-def hand_no():
-	global constitution
-	print("")
-	print("You really should have taken his hand... He stabs you and walks away whistling a merry tune.")
-	death = jinput ("You died, would you like to start again... or get up!?: ")
-	if death in yes:
-		pass
-		#main()
-	elif death in no:
-		exit()
-	elif death == "NOOO" or death == "get up" or death == "NO" or death == "stand up":
-		strength
-		constitution += 2 
-		hardy()
-
-def hardy():
-	global yes
-	print("YOU'RE ALIVE")
-
-#main()
-#quit()
-
+	Class = "NOTCHOSEN"
+	p_name = "NOTCHOSEN"	
+	
+	global player
+	player = Hero(p_name, Class)
+	
+	print(player.name)
+	
+	if prog <= 0:
+		#Dream
+		print("You find yourself wandering a forest, a dream")
+		dream()
+	
+	if prog <= 0.1:
+	
+		#Awake
+		print("""\nYou wake up to the sounds of birds chirping in the trees around you. Slowly, as your blurry 
+	vision begins to focus you realise a small boy is standing over you, a wide grin on his face.""")
+		time.sleep(1)
+		print("""\nBefore you have a chance to get up he sticks out his hand, asking you a question in a cheery voice,
+	\"What's your name mister?\"""")
+		
+		#Get player name
+		p_name = player_name()
+		player.name = p_name
+		
+		#Choice
+		choice = take_hand()
+		choices["Chapter1"].update({"Take Hand":choice})
+		if not choice:
+			print("\nYou really should have taken his hand... He stabs you and walks away whistling a merry tune.")
+	
