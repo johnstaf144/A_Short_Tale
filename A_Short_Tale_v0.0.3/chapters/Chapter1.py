@@ -30,9 +30,7 @@ def chapter1(prog):
 	
 	global player
 	player = Hero(p_name, Class)
-	
-	print(player.name)
-	
+		
 	if prog <= 0:
 		#Dream
 		print("You find yourself wandering a forest, a dream")
