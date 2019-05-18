@@ -19,10 +19,13 @@ from chapters.Chapter1 import *
 
 AltENTER() #Make full screen.
 		  
-kart()
-clear()
-art()
+kart() #Animation
+clear() #Clear cmd 
+art() #Create menu art
       
-main()
+story = main() #In MUSTFUNC, says new/load
 
-dream()
+chapter = int(story)
+prog = story - chapter
+
+chapter1(prog)

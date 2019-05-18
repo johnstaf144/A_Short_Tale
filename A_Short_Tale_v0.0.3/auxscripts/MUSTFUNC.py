@@ -6,6 +6,16 @@ from auxscripts.init import * #Initialise game
 from auxscripts.MUSTFUNC import * #VERY IMPORT FUNCTIONS TO THE STORY
 from auxscripts.func import * #Useful functions
 from auxscripts.values import * #Values
+from auxscripts.save import * #save
+from auxscripts.read import * #load
+try:
+	from save import *
+except:
+	pass
+try:
+	from read import *
+except:
+	 pass
 
 def art():
 	print(Fore.GREEN)
@@ -18,31 +28,31 @@ def art():
 	print(" (_)_\(_)     / __|  | || |  / _ \  | _ \  |_   _|      |_   _|   (_)_\(_) | |    | __| ")
 	print("  / _ \       \__ \  | __ | | (_) | |   /    | |          | |      / _ \   | |__  | _|  ")
 	print(" /_/ \_\      |___/  |_||_|  \___/  |_|_\    |_|          |_|     /_/ \_\  |____| |___| ")
-	print("""                                .-.
-                               {{@}}
-               <>               8@8
-             .::::.             888
-         @\\\/W\/\/W\//@         8@8
-          \\\/^\/\/^\//     _    )8(    _
-           \_O_<>_O_/     (@)__/8@8\__(@)
-      ____________________ `~"-=):(=-"~`
-     |<><><>  |  |  <><><>|     |.|
-     |<>      |  |      <>|     |Y|
-     |<>      |  |      <>|     |'|
-     |<>   .--------.   <>|     |.|
-     |     |   ()   |     |     |E|
-     |_____| (O\/O) |_____|     |'|
-     |     \   /\   /     |     |.|
-     |------\  \/  /------|     |E|
-     |   BY  '.__.'       |     |'|
-     |        |  |        |     |.|
-     :  JOHN  |  |STAFFORD:     |T|
-      \<>     |  |     <>/      |'|
-       \<>    |  |    <>/       |.|
-        \<>   |  |   <>/        |!|
-         `\<> |  | <>/'         |'|
-           `-.|  |.-`           \ /
-              '--'               ^ """)
+	print("""                	     	  	         	.-.
+			                               {{@}}
+			               <>               8@8
+			             .::::.             888
+			         @\\\/W\/\/W\//@         8@8
+			          \\\/^\/\/^\//     _    )8(    _
+			           \_O_<>_O_/     (@)__/8@8\__(@)
+			      ____________________ `~"-=):(=-"~`
+			     |<><><>  |  |  <><><>|     |.|
+			     |<>      |  |      <>|     |Y|
+			     |<>      |  |      <>|     |'|
+			     |<>   .--------.   <>|     |.|
+			     |     |   ()   |     |     |E|
+			     |_____| (O\/O) |_____|     |'|
+			     |     \   /\   /     |     |.|
+			     |------\  \/  /------|     |E|
+			     |   BY  '.__.'       |     |'|
+			     |        |  |        |     |.|
+			     :  JOHN  |  |STAFFORD:     |T|
+			      \<>     |  |     <>/      |'|
+			       \<>    |  |    <>/       |.|
+			        \<>   |  |   <>/        |!|
+			         `\<> |  | <>/'         |'|
+			           `-.|  |.-`           \ /
+			              '--'               ^ """)
 	
 def kprint(s, t = 0.05):
 	print(s)
@@ -60,47 +70,55 @@ def kart():
 	kprint(" (_)_\(_)     / __|  | || |  / _ \  | _ \  |_   _|      |_   _|   (_)_\(_) | |    | __| ")
 	kprint("  / _ \       \__ \  | __ | | (_) | |   /    | |          | |      / _ \   | |__  | _|  ")
 	kprint(" /_/ \_\      |___/  |_||_|  \___/  |_|_\    |_|          |_|     /_/ \_\  |____| |___| ")
-	kprint("                                  .-.                                                   ")
-	kprint("                           {{@}}")
-	kprint("           <>               8@8")
-	kprint("         .::::.             888")
-	kprint("     @\\\/W\/\/W\//@         8@8")
-	kprint("      \\\/^\/\/^\//     _    )8(    _")
-	kprint("       \_O_<>_O_/     (@)__/8@8\__(@)")
-	kprint("  ____________________ `~\"-=):(=-\"~`")
-	kprint(" |<><><>  |  |  <><><>|     |.|")
-	kprint(" |<>      |  |      <>|     |Y|")
-	kprint(" |<>      |  |      <>|     |'|")
-	kprint(" |<>   .--------.   <>|     |.|")
-	kprint(" |     |   ()   |     |     |E|")
-	kprint(" |_____| (O\/O) |_____|     |'|")
-	kprint(" |     \   /\   /     |     |.|")
-	kprint(" |------\  \/  /------|     |E|")
-	kprint(" |   BY  '.__.'       |     |'|")
-	kprint(" |        |  |        |     |.|")
-	kprint(" :  JOHN  |  |STAFFORD:     |T|")
-	kprint("  \<>     |  |     <>/      |'|")
-	kprint("   \<>    |  |    <>/       |.|")
-	kprint("    \<>   |  |   <>/        |!|")
-	kprint("     `\<> |  | <>/'         |'|")
-	kprint("       `-.|  |.-`           \ /")
-	kprint("          '--'               ^ ")
+	kprint("  	     		                           .-.                                                   ")
+	kprint(" 	      		                          {{@}}")
+	kprint(" 	     		          <>               8@8")
+	kprint(" 	     		        .::::.             888")
+	kprint(" 	     		    @\\\/W\/\/W\//@         8@8")
+	kprint(" 	     		     \\\/^\/\/^\//     _    )8(    _")
+	kprint(" 	     		      \_O_<>_O_/     (@)__/8@8\__(@)")
+	kprint(" 	     		 ___________________ `~\"-=):(=-\"~`")
+	kprint(" 	     		|<><><>  |  |  <><><>|     |.|")
+	kprint(" 	     		|<>      |  |      <>|     |Y|")
+	kprint(" 	     		|<>      |  |      <>|     |'|")
+	kprint(" 	     		|<>   .--------.   <>|     |.|")
+	kprint(" 	     		|     |   ()   |     |     |E|")
+	kprint(" 	     		|_____| (O\/O) |_____|     |'|")
+	kprint(" 	     		|     \   /\   /     |     |.|")
+	kprint(" 	     		|------\  \/  /------|     |E|")
+	kprint(" 	     		|   BY  '.__.'       |     |'|")
+	kprint(" 	     		|        |  |        |     |.|")
+	kprint(" 	                     :  JOHN  |  |STAFFORD:     |T|")
+	kprint("          		         \<>     |  |     <>/      |'|")
+	kprint("  	      		  \<>    |  |    <>/       |.|")
+	kprint("   	     		   \<>   |  |   <>/        |!|")
+	kprint("  	     	 	    `\<> |  | <>/'         |'|")
+	kprint("   	     		      `-.|  |.-`           \ /")
+	kprint("         		         '--'               ^ ")
 
 
 def main():
 	jinput("Press enter key to start: ")
 	new_game = jinput("New game/load chapter? [new/load]:")
 	if new_game == "new":
-		pass
+		story = 1.0
 	elif new_game == "load":
-		print("Chapter 1")
-		print("Chapter 2")
-		print("Chapter 3")
-		print("Chapter 4")
-		chapter = jinput(Fore.CYAN + "Choose a chapter: " + Fore.GREEN)
+		player, story_progress, Choices = load()
 	else:
 		print(required)
 		print("")
 		print("Restarting")
 		time.sleep(1)
 		main()
+	return story
+		
+def death():
+	death = jinput ("You died, would you like to start again... or get up!?: ")
+	if death == "yes":
+		pass
+	elif death in no:
+		quit()
+	elif death == "NOOO" or death == "get up" or death == "NO" or death == "stand up":
+		strength
+		constitution += 2 
+		hardy()
