@@ -5,36 +5,45 @@
 #or storing the hidden class variable if you know the specific answer!
 from colorama import Fore
 
-import time
+import time, sys, random
 from auxscripts.func import update_prog, recap, save_progress
 from __main__ import game, player
 
 #Functions
 from chapters.Chapter1Func import player_name, dream, take_hand
 
+def pprint(s):
+	time.sleep(1)
+	for i in range(len(s)):
+		print(s[:i+1], end="\r")
+		time.sleep(random.randint(1, 5)/100)
+
 def chapter1(player):
 						
 	if game.prog <= 0:
 		#Dream
-		print("You find yourself wandering a forest, a dream")
+		pprint("You find yourself wandering a forest, a dream.\n")
 	
 		dream_choice = game.make_choice("Run or stay", "Do you?", "Run", "Stay", secret = ["Wake up"])
 		if dream_choice == "A":
-			print("You run")
+			pprint("You run.\n")
 		elif dream_choice == "B":
-			print("You stay")
+			pprint("You stay.\n")
 		elif dream_choice == "WAKE UP":
-			print("You realise")
+			pprint("You realise...\n")
+			
+		time.sleep(1)
+		
 		update_prog()
 		
 	if game.prog <= 0.01:
 	
 		#Awake
-		print("""\nYou wake up to the sounds of birds chirping in the trees around you. Slowly, as your blurry 
-	vision begins to focus you realise a small boy is standing over you, a wide grin on his face.""")
+		pprint("You wake up to the sounds of birds chirping in the trees around you. Slowly, as your blurry vision begins to focus you realise a small boy is standing over you, a wide grin on his face.\n")
 		time.sleep(1)
-		print("""\nBefore you have a chance to get up he sticks out his hand, asking you a question in a cheery voice,
-	\"What's your name mister?\"""")
+		pprint("Before you have a chance to get up he sticks out his hand, asking you a question in a cheery voice.\n")
+		time.sleep(1)
+		pprint("\"What's your name mister?\"\n")
 				
 		#Get player name and create class
 		p_name = player_name()
@@ -43,12 +52,14 @@ def chapter1(player):
 		update_prog()
 		
 	if game.prog <= 0.02:
-			
+					
 		choice = game.make_choice("Take hand", "Do you take his hand?", "Yes", "No")
 		if choice == "A":
 			player.pickup("Hand")
+			time.sleep(1)
 		if choice == "B":
-			print(Fore.GREEN + "\nYou really should have taken his hand... He stabs you and walks away whistling a merry tune.")
+			pprint(Fore.GREEN + "You really should have taken his hand... He stabs you and walks away whistling a merry tune.")
+			time.sleep(1)
 			
 		update_prog()
 		

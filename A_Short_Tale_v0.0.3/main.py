@@ -1,8 +1,34 @@
 #Main file for A Short Tale
 
 from colorama import Fore
-import sys, time
+import sys, time, random
 from datetime import datetime
+
+l01 = "                	     	      	    .-."
+l02 = "		                               {{@}}"
+l03 = "		               <>               8@8"
+l04 = "		             .::::.             888"
+l05 = "		         @\\\/W\/\/W\//@         8@8"
+l06 = "		          \\\/^\/\/^\//     _    )8(    _"
+l07 = "		           \_O_<>_O_/     (@)__/8@8\__(@)"
+l08 = "		      ____________________ `~\"-=):(=-\"~`"
+l09 = "		     |<><><>  |  |  <><><>|     |.|"
+l10 = "		     |<>      |  |      <>|     |Y|"
+l11 = "		     |<>      |  |      <>|     |'|"
+l12 = "		     |<>   .--------.   <>|     |.|"
+l13 = "		     |     |   ()   |     |     |E|"
+l14 = "		     |_____| (O\/O) |_____|     |'|"
+l15 = "		     |     \   /\   /     |     |.|"
+l16 = "		     |------\  \/  /------|     |E|"
+l17 = "		     |   BY  '.__.'       |     |'|"
+l18 = "		     |        |  |        |     |.|"
+l19 = "		     :  JOHN  |  |STAFFORD:     |T|"
+l20 = "		      \<>     |  |     <>/      |'|"
+l21 = "		       \<>    |  |    <>/       |.|"
+l22 = "		        \<>   |  |   <>/        |!|"
+l23 = "		         `\<> |  | <>/'         |'|"
+l24 = "		           `-.|  |.-`           \ /"
+l25 = "	                      '--'               ^"
 
 class Game():
 	def __init__(self):
@@ -55,6 +81,7 @@ class Game():
 				quit()
 		self.choices["Chapter1"].update({name:args[ord(ans) - 65]})
 		return ans
+			
 
 game = Game()
 
@@ -133,8 +160,7 @@ clear = lambda: os.system('cls')
 def quit():
 	print("Thank you for playing!")
 	time.sleep(2)
-	sys.exit()
-	
+	sys.exit()	
 #%%
 #########################################################################################################################
 #########################################################################################################################
@@ -152,5 +178,14 @@ player, story = main(player) #In MUSTFUNC, says new/load
 game.chapter = int(story)
 game.prog = story - game.chapter
 game.prog = round(game.prog , 2)
+
+print("\n")
+print(Fore.CYAN + "---------")
+time.sleep(0.3)
+print(Fore.CYAN + "Chapter 1")
+time.sleep(0.3)
+print(Fore.CYAN + "---------\n" + Fore.GREEN)
+
+time.sleep(2)
 
 chapter1(player)

@@ -36,4 +36,11 @@ class Hero():
 	def pickup(self, item):
 		print("{} added to inventory!".format(item))
 		self.inventory.append(item)
-		 
+	
+	def show_inventory(self):
+		if len(player.inventory) > 0:
+			print("In your inventory, you currently have:")
+			for item in player.inventory:
+				print("    -{}".format(item))
+		else:
+			print("In your inventory, you currently have nothing.")

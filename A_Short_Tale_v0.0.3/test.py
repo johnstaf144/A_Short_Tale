@@ -1,9 +1,14 @@
-import os
+import time
+import random
 
-path_to_dir = os.path.abspath(".")
+def pprint(s):
+	time.sleep(1)
+	for i in range(len(s)):
+		print(s[:i+1], end="\r")
+		time.sleep(random.randint(2, 10)/100)
+		
+pprint("Emma Langfield, are you there??")
+time.sleep(3)
+pprint("Please respond...")
 
-saves = os.walk(path_to_dir + "/saveData")
-
-for x in saves:
-	for file in x[2]:
-		print(file)
+time.sleep(5)

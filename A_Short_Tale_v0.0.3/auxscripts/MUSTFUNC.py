@@ -44,7 +44,7 @@ def art():
 			           `-.|  |.-`           \ /
 			              '--'               ^ """)
 	
-def kprint(s, t = 0.05):
+def kprint(s, t = 0.02):
 	print(s)
 	time.sleep(t)
 
@@ -85,7 +85,13 @@ def kart():
 	kprint("			         `\<> |  | <>/'         |'|")
 	kprint("			           `-.|  |.-`           \ /")
 	kprint("			              '--'               ^ ")
-
+	
+def pprint(s):
+	time.sleep(0.5)
+	for i in range(len(s)):
+		print(s[:i+1], end="\r")
+		time.sleep(random.randint(1, 10)/100)
+	print("\n")
 
 def main(player):
 	jinput("Press enter key to start: ")
@@ -95,22 +101,22 @@ def main(player):
 	elif new_game == "load":
 		path_to_dir = os.path.abspath(".")
 		saves = os.walk(path_to_dir + "/saveData")
-		print("Here are your saved files.")
+		pprint("Here are your saved files.")
 		for x in saves:
 			for j, file in enumerate(x[2]):
-				print("{}: {}".format(j + 1, file[:-4]))
+				pprint("{}: {}".format(j + 1, file[:-4]))
 		file_number = input("Which file do you choose? ")
 		while file_number not in [str(i) for i in range(1, len(x[2]) + 1)]:
 			file_number = input("Please pick again!\nWhich file do you choose? ")
 		file = x[2][int(file_number) - 1]
 		player, story_progress, choices = load(file)
 		game.choices = choices
-		print("Welcome back, {}!".format(player.name))
+		pprint("Welcome back, {}!".format(player.name))
 		time.sleep(1)
 	else:
-		print(required)
+		pprint(required)
 		print("")
-		print("Restarting")
+		pprint("Restarting")
 		time.sleep(1)
 		main(player)
 	return player, story_progress
