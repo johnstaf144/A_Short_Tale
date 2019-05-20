@@ -41,6 +41,8 @@ def chapter1(player):
 		player.name = p_name
 			
 		choice = game.make_choice("Take hand", "Do you take his hand?", "Yes", "No")
+        if choice == "A":
+            pickup("Hand")
 		if choice == "B":
 			print(Fore.GREEN + "\nYou really should have taken his hand... He stabs you and walks away whistling a merry tune.")
 			

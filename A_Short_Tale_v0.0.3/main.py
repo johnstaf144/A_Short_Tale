@@ -151,6 +151,7 @@ player, story = main(player) #In MUSTFUNC, says new/load
 
 game.chapter = int(story)
 game.prog = story - game.chapter
+game.prog = round(game.prog , 2)
 
 
 chapter1(player)
