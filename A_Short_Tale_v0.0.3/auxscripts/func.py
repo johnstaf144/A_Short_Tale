@@ -110,19 +110,18 @@ def update_prog(amount = 0.01):
 	game.prog += amount 
 	
 def tolist(l):
-	return l[1:-1].split(",") #removes square brackets, and splits by comma, resulting in list
+	return l[1:-1].replace("\"", "").split(", ") #removes square brackets, and splits by comma, resulting in list
 
-def recap(chap):
+def recap(player, chap):
 	print(Fore.GREEN + "Here is a recap of your story so far, now that you have finished Chapter {}.".format(chap))
-	print("Your story progress number is {}.\n".format(game.prog))
+	print("Your story progress number is {}.\n".format(game.chapter + game.prog))
 	if len(player.inventory) > 0:
 		print("In your inventory, you currently have:")
 		for item in player.inventory:
 			print("    -{}".format(item))
 	else:
 		print("In your inventory, you currently have nothing.")
-	print("\n")
-	print("The choices you have made are: ")
+	print("\nThe choices you have made are: ")
 	for choice in game.choices["Chapter{}".format(chap)]:
 		print("For the {} choice, you chose {}.".format(choice, game.choices["Chapter{}".format(chap)][choice]))
 		

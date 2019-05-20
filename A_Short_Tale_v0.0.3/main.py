@@ -153,5 +153,4 @@ game.chapter = int(story)
 game.prog = story - game.chapter
 game.prog = round(game.prog , 2)
 
-
 chapter1(player)

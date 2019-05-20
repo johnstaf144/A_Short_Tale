@@ -39,22 +39,26 @@ def chapter1(player):
 		#Get player name and create class
 		p_name = player_name()
 		player.name = p_name
+		
+		update_prog()
+		
+	if game.prog <= 0.02:
 			
 		choice = game.make_choice("Take hand", "Do you take his hand?", "Yes", "No")
-        if choice == "A":
-            pickup("Hand")
+		if choice == "A":
+			player.pickup("Hand")
 		if choice == "B":
 			print(Fore.GREEN + "\nYou really should have taken his hand... He stabs you and walks away whistling a merry tune.")
 			
 		update_prog()
 		
-	if game.prog <= 0.02:
+	if game.prog <= 0.03:
 		
 		print(Fore.GREEN + "Get fucked {}".format(player.name))
 	
 	print("\n")	
-	print(Fore.CYAN + "Chapter finished")
-	recap(1)
+	print(Fore.CYAN + "Chapter finished!\n")
+	recap(player, 1)
 	
 	game.chapter = 2
 	game.prog = 0

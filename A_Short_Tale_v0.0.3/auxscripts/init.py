@@ -34,6 +34,6 @@ class Hero():
 		self.apocalypse = 0
 		
 	def pickup(self, item):
-        print("{} added to inventory!".format(item))
-        self.inventory.append(item)
+		print("{} added to inventory!".format(item))
+		self.inventory.append(item)
 		 
