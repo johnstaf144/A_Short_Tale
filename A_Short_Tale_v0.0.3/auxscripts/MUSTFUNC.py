@@ -112,7 +112,7 @@ def main(player):
 		print("")
 		print("Restarting")
 		time.sleep(1)
-		main()
+		main(player)
 	return player, story_progress
 		
 def death():
