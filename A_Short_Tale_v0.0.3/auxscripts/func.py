@@ -5,6 +5,7 @@ import sys
 
 from auxscripts.values import l_quit #Values
 from __main__ import game, player
+from datetime import datetime
 
 #Save
 def jinput(string):
@@ -48,7 +49,10 @@ def quit():
 		
 clear = lambda: os.system('cls')
 
-def save_progress(name = "AutoSave"):
+def save_progress(name = "AutoSave", quiet = False):
+	
+	if name == "AutoSave":
+		name = name + datetime.now().strftime("at %H.%M on %d-%m")
 	
 	name = name + ".txt"
 	
@@ -98,7 +102,8 @@ def save_progress(name = "AutoSave"):
 		
 	save_file.close()
 	
-	print("Saved progress!")
+	if not quiet:
+		print("Saved progress!")
 	time.sleep(1)
 	
 def update_prog(amount = 0.01):
@@ -110,9 +115,12 @@ def tolist(l):
 def recap(chap):
 	print(Fore.GREEN + "Here is a recap of your story so far, now that you have finished Chapter {}.".format(chap))
 	print("Your story progress number is {}.\n".format(game.prog))
-	print("In your inventory, you currently have:")
-	for item in player.inventory:
-		print("    -{}".format(item))
+	if len(player.invetory) > 0:
+		print("In your inventory, you currently have:")
+		for item in player.inventory:
+			print("    -{}".format(item))
+	else:
+		print("In your inventory, you currently have nothing.")
 	print("\n")
 	print("The choices you have made are: ")
 	for choice in game.choices["Chapter{}".format(chap)]:

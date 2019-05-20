@@ -17,8 +17,14 @@ def chapter1(player):
 	if game.prog <= 0:
 		#Dream
 		print("You find yourself wandering a forest, a dream")
-		dream()
-		
+	
+		dream_choice = game.make_choice("Run or stay", "Do you?", "Run", "Stay", secret = ["Wake up"])
+		if dream_choice == "A":
+			print("You run")
+		elif dream_choice == "B":
+			print("You stay")
+		elif dream_choice == "WAKE UP":
+			print("You realise")
 		update_prog()
 		
 	if game.prog <= 0.01:
@@ -33,12 +39,9 @@ def chapter1(player):
 		#Get player name and create class
 		p_name = player_name()
 		player.name = p_name
-				
-		#Choice
-		choice = take_hand()
-		game.choices["Chapter1"].update({"Take Hand":choice})
-		print("You choice", choice)
-		if not choice:
+			
+		choice = game.make_choice("Take hand", "Do you take his hand?", "Yes", "No")
+		if choice == "B":
 			print(Fore.GREEN + "\nYou really should have taken his hand... He stabs you and walks away whistling a merry tune.")
 			
 		update_prog()
@@ -46,8 +49,11 @@ def chapter1(player):
 	if game.prog <= 0.02:
 		
 		print(Fore.GREEN + "Get fucked {}".format(player.name))
-		
-	print(Fore.GREEN + "Chapter finished")
+	
+	print("\n")	
+	print(Fore.CYAN + "Chapter finished")
 	recap(1)
 	
-	save_progress()
+	save_progress(quiet = True)
+	
+	input("Press any key to finish")
