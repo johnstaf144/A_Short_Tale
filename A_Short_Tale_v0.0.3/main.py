@@ -1,8 +1,8 @@
 #Main file for A Short Tale
 
 from colorama import Fore
-from auxscripts.save import save_progress
 import sys, time
+from datetime import datetime
 
 class Game():
 	def __init__(self):
@@ -58,6 +58,63 @@ class Game():
 
 game = Game()
 
+def save_progress(name = "AutoSave", quiet = False):
+	
+	if name == "AutoSave":
+		name = name + datetime.now().strftime(" at %H.%M on %d-%m")
+	
+	name = name + ".txt"
+	
+	player_atts = [player.name,
+			player.inventory,
+			player.Class,
+	
+			player.mage,
+			player.warrior,
+			player.berserker,
+			player.assassin,
+			player.yeet,
+			player.hidden_class,
+			
+			#player stats
+			player.speed,
+			player.perception,
+			player.magic,
+			player.strength,
+			player.stealth,
+			player.speech,
+			player.constitution,
+			
+			#player skills for chapter 1
+			player.pickpocket,
+			player.lock_pick,
+			player.self_combust,
+			player.hold_breath,
+			player.animal_lang,
+			player.premonition,
+			player.apocalypse]
+	
+	path_to_dir = os.path.abspath(".")
+	save_file = open(path_to_dir + "/saveData/{}".format(name), "w")
+	
+	save_file.write("#PLAYER\n")
+	for stat in player_atts:
+		save_file.write(str(stat))
+		save_file.write("\n")
+		
+	save_file.write("#STORY\n")
+	save_file.write(str(game.chapter + game.prog))
+	save_file.write("\n")
+					
+	save_file.write("#CHOICES\n")
+	save_file.write(str(game.choices))
+		
+	save_file.close()
+	
+	if not quiet:
+		print("Saved progress!")
+	time.sleep(1)
+
 from auxscripts.init import Hero
 
 player = Hero("NONAME", "NOCLASS")
@@ -77,6 +134,12 @@ def quit():
 	print("Thank you for playing!")
 	time.sleep(2)
 	sys.exit()
+	
+#%%
+#########################################################################################################################
+#########################################################################################################################
+#########################################################################################################################
+#########################################################################################################################
 
 AltENTER() #Make full screen.
 		  
@@ -88,5 +151,6 @@ player, story = main(player) #In MUSTFUNC, says new/load
 
 game.chapter = int(story)
 game.prog = story - game.chapter
+
 
 chapter1(player)

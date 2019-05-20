@@ -1,3 +1,6 @@
+from __main__ import game, player
+from datetime import datetime
+
 def save_progress(name = "AutoSave", quiet = False):
 	
 	if name == "AutoSave":

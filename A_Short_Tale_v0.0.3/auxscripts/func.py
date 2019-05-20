@@ -52,7 +52,7 @@ clear = lambda: os.system('cls')
 def save_progress(name = "AutoSave", quiet = False):
 	
 	if name == "AutoSave":
-		name = name + datetime.now().strftime("at %H.%M on %d-%m")
+		name = name + datetime.now().strftime(" at %H.%M on %d-%m")
 	
 	name = name + ".txt"
 	
@@ -94,7 +94,7 @@ def save_progress(name = "AutoSave", quiet = False):
 		save_file.write("\n")
 		
 	save_file.write("#STORY\n")
-	save_file.write(str(game.prog))
+	save_file.write(str(game.chapter + game.prog))
 	save_file.write("\n")
 					
 	save_file.write("#CHOICES\n")
@@ -115,7 +115,7 @@ def tolist(l):
 def recap(chap):
 	print(Fore.GREEN + "Here is a recap of your story so far, now that you have finished Chapter {}.".format(chap))
 	print("Your story progress number is {}.\n".format(game.prog))
-	if len(player.invetory) > 0:
+	if len(player.inventory) > 0:
 		print("In your inventory, you currently have:")
 		for item in player.inventory:
 			print("    -{}".format(item))

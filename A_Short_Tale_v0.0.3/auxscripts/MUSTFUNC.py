@@ -93,7 +93,17 @@ def main(player):
 	if new_game == "new":
 		story_progress = 1.0
 	elif new_game == "load":
-		player, story_progress, choices = load()
+		path_to_dir = os.path.abspath(".")
+		saves = os.walk(path_to_dir + "/saveData")
+		print("Here are your saved files.")
+		for x in saves:
+			for j, file in enumerate(x[2]):
+				print("{}: {}".format(j + 1, file[:-4]))
+		file_number = input("Which file do you choose? ")
+		while file_number not in [str(i) for i in range(1, len(x[2]) + 1)]:
+			file_number = input("Please pick again!\nWhich file do you choose? ")
+		file = x[2][int(file_number) - 1]
+		player, story_progress, choices = load(file)
 		game.choices = choices
 		print("Welcome back, {}!".format(player.name))
 		time.sleep(1)

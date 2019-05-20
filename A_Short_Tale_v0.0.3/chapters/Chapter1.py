@@ -54,6 +54,8 @@ def chapter1(player):
 	print(Fore.CYAN + "Chapter finished")
 	recap(1)
 	
+	game.chapter = 2
+	game.prog = 0
 	save_progress(quiet = True)
 	
 	input("Press any key to finish")

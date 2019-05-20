@@ -4,11 +4,10 @@ import os
 from auxscripts.func import tolist
 from ast import literal_eval
 
-def load():
+def load(name = "AutoSave"):
 	
 	path_to_dir = os.path.abspath(".")
-	save_file = open(path_to_dir + "/saveData/save.txt", "r")
-	#save_file = open("../saveData/save.txt", "r") #For debugging, reads file but you can run the function from this script.
+	save_file = open(path_to_dir + "/saveData/{}".format(name), "r")
 	read_file = save_file.read().split("\n")
 	save_file.close()
 	
