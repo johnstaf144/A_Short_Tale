@@ -1,6 +1,7 @@
 from colorama import Fore
 from auxscripts.read import load #load
 from auxscripts.func import jinput #Useful functions
+from __main__ import game, player
 from auxscripts.values import required, no
 import time, os
 
@@ -86,20 +87,23 @@ def kart():
 	kprint("         		         '--'               ^ ")
 
 
-def main():
+def main(player):
 	jinput("Press enter key to start: ")
 	new_game = jinput("New game/load chapter? [new/load]:")
 	if new_game == "new":
 		story_progress = 1.0
 	elif new_game == "load":
-		player, story_progress, Choices = load()
+		player, story_progress, choices = load()
+		game.choices = choices
+		print("Welcome back, {}!".format(player.name))
+		time.sleep(1)
 	else:
 		print(required)
 		print("")
 		print("Restarting")
 		time.sleep(1)
 		main()
-	return story_progress
+	return player, story_progress
 		
 def death():
 	death = jinput ("You died, would you like to start again... or get up!?: ")

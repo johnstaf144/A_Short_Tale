@@ -1,6 +1,29 @@
 #Main file for A Short Tale
 
-#Auxillary scripts
+class Game():
+	
+	def __init__(self):
+		
+		#Initialize game class, to hold variables for the user. This includes progress for saving, and other clever things John will think of. 
+		
+		
+		self.chapter = 1
+		self.prog = 0
+		
+		self.choices = {"Chapter1":{},
+		   "Chapter2":{},
+		   "Chapter3":{},
+		   "Chapter4":{},
+		   "Chapter5":{},
+		   "Chapter6":{}}
+				
+game = Game()
+
+from auxscripts.init import Hero
+
+player = Hero("NONAME", "NOCLASS")
+
+#Auxillary scripts6
 from auxscripts.fullscreen import AltENTER #To go full screen
 from auxscripts.MUSTFUNC import art, kart, main #VERY IMPORT FUNCTIONS TO THE STORY
 
@@ -16,10 +39,10 @@ AltENTER() #Make full screen.
 kart() #Animation
 clear() #Clear cmd 
 art() #Create menu art
-      
-story = main() #In MUSTFUNC, says new/load
 
-chapter = int(story)
-prog = story - chapter
+player, story = main(player) #In MUSTFUNC, says new/load
 
-chapter1(prog)
+game.chapter = int(story)
+game.prog = story - game.chapter
+
+chapter1(player)

@@ -15,10 +15,3 @@ comp_e = ["east" , "East" , "e" , "E"]
 comp_s = ["South" , "south", "s", "S"]
 
 l_quit = ["quit", "exit"]
-
-choices = {"Chapter1":{},
-		   "Chapter2":{},
-		   "Chapter3":{},
-		   "Chapter4":{},
-		   "Chapter5":{},
-		   "Chapter6":{}}

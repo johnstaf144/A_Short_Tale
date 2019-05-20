@@ -4,7 +4,7 @@ import time
 import sys
 
 from auxscripts.values import l_quit #Values
-from auxscripts.init import player #Values
+from __main__ import game, player
 
 #Save
 def jinput(string):
@@ -21,6 +21,13 @@ def jinput(string):
 	elif ans.lower() == "save":
 		#print(player.name)
 		save_progress()
+	elif "save" in ans.lower():
+		split_save = ans.lower().split(" ")
+		name = " ".join(split_save[1:])
+		if name == "":
+			save_progress()
+		else:
+			save_progress(name)
 	else:
 		return ans
 
@@ -41,7 +48,9 @@ def quit():
 		
 clear = lambda: os.system('cls')
 
-def save_progress():
+def save_progress(name = "AutoSave"):
+	
+	name = name + ".txt"
 	
 	player_atts = [player.name,
 			player.inventory,
@@ -72,8 +81,8 @@ def save_progress():
 			player.premonition,
 			player.apocalypse]
 	
-	
-	save_file = open("save.txt", "w")
+	path_to_dir = os.path.abspath(".")
+	save_file = open(path_to_dir + "/saveData/{}".format(name), "w")
 	
 	save_file.write("#PLAYER\n")
 	for stat in player_atts:
@@ -81,12 +90,31 @@ def save_progress():
 		save_file.write("\n")
 		
 	save_file.write("#STORY\n")
-	save_file.write("4.12\n")
+	save_file.write(str(game.prog))
+	save_file.write("\n")
 					
 	save_file.write("#CHOICES\n")
-	save_file.write("{Chaper}")
+	save_file.write(str(game.choices))
 		
 	save_file.close()
 	
 	print("Saved progress!")
 	time.sleep(1)
+	
+def update_prog(amount = 0.01):
+	game.prog += amount 
+	
+def tolist(l):
+	return l[1:-1].split(",") #removes square brackets, and splits by comma, resulting in list
+
+def recap(chap):
+	print(Fore.GREEN + "Here is a recap of your story so far, now that you have finished Chapter {}.".format(chap))
+	print("Your story progress number is {}.\n".format(game.prog))
+	print("In your inventory, you currently have:")
+	for item in player.inventory:
+		print("    -{}".format(item))
+	print("\n")
+	print("The choices you have made are: ")
+	for choice in game.choices["Chapter{}".format(chap)]:
+		print("For the {} choice, you chose {}.".format(choice, game.choices["Chapter{}".format(chap)][choice]))
+		

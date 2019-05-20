@@ -1,9 +1,14 @@
 #from auxscripts.init import Hero
 import auxscripts.init
+import os
+from auxscripts.func import tolist
+from ast import literal_eval
 
 def load():
 	
-	save_file = open("save.txt", "r")
+	path_to_dir = os.path.abspath(".")
+	save_file = open(path_to_dir + "/saveData/save.txt", "r")
+	#save_file = open("../saveData/save.txt", "r") #For debugging, reads file but you can run the function from this script.
 	read_file = save_file.read().split("\n")
 	save_file.close()
 	
@@ -12,14 +17,12 @@ def load():
 	choice_index = read_file.index("#CHOICES")
 								   
 	player_atts = read_file[player_index + 1:story_index]
-	story_progress = read_file[story_index + 1]
+	story_progress = float(read_file[story_index + 1])
 	choices = read_file[choice_index + 1]
 	
 	#%% Recreate player
 	player = auxscripts.init.Hero(player_atts[0], player_atts[2])
-	
-	player.inventory = player_atts[1]
-	
+		
 	player.mage = player_atts[3]
 	player.warrior = player_atts[4]
 	player.berserker = player_atts[5]
@@ -46,8 +49,12 @@ def load():
 	player.apocalypse = player_atts[22]
 
 	
-	#%% Recreate Story
+	#%% Recreate Inventory
+
+	player.inventory = tolist(player_atts[1])
 	
 	#%% Recreate Choices
+	
+	choices = literal_eval(choices)
 	
 	return player, story_progress, choices

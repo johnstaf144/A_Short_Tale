@@ -3,21 +3,25 @@
 ############################################################
 #dream, you choose to do one of four options which will result in either carrying on as normal
 #or storing the hidden class variable if you know the specific answer!
+from colorama import Fore
+
 import time
-from auxscripts.init import player #Initialise game
-from auxscripts.values import choices
+from auxscripts.func import update_prog, recap, save_progress
+from __main__ import game, player
 
 #Functions
 from chapters.Chapter1Func import player_name, dream, take_hand
 
-def chapter1(prog):
-					
-	if prog <= 0:
+def chapter1(player):
+						
+	if game.prog <= 0:
 		#Dream
 		print("You find yourself wandering a forest, a dream")
 		dream()
-	
-	if prog <= 0.1:
+		
+		update_prog()
+		
+	if game.prog <= 0.01:
 	
 		#Awake
 		print("""\nYou wake up to the sounds of birds chirping in the trees around you. Slowly, as your blurry 
@@ -29,13 +33,21 @@ def chapter1(prog):
 		#Get player name and create class
 		p_name = player_name()
 		player.name = p_name
-		print("I MADE THE FUCKING HERO, HIS NAME IS {}".format(player.name))
 				
 		#Choice
 		choice = take_hand()
-		choices["Chapter1"].update({"Take Hand":choice})
+		game.choices["Chapter1"].update({"Take Hand":choice})
+		print("You choice", choice)
 		if not choice:
-			print("\nYou really should have taken his hand... He stabs you and walks away whistling a merry tune.")
+			print(Fore.GREEN + "\nYou really should have taken his hand... He stabs you and walks away whistling a merry tune.")
 			
+		update_prog()
 		
+	if game.prog <= 0.02:
+		
+		print(Fore.GREEN + "Get fucked {}".format(player.name))
+		
+	print(Fore.GREEN + "Chapter finished")
+	recap(1)
 	
+	save_progress()

@@ -37,5 +37,3 @@ class Hero():
 		
 		self.inventory.append(item)
 		 
-
-player = Hero("NONAME", "NOCLASS")
