@@ -13,10 +13,7 @@ from __main__ import game, player
 from chapters.Chapter1Func import player_name, dream, take_hand
 
 def pprint(s):
-	time.sleep(1)
-	for i in range(len(s)):
-		print(s[:i+1], end="\r")
-		time.sleep(random.randint(1, 5)/100)
+	print(s)
 
 def chapter1(player):
 						

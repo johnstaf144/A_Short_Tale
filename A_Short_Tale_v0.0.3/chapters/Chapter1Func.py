@@ -10,11 +10,7 @@ from auxscripts.func import jinput, jinputUpper #Useful functions
 from auxscripts.values import no, required #
 
 def pprint(s):
-	time.sleep(0.5)
-	for i in range(len(s)):
-		print(s[:i+1], end="\r")
-		time.sleep(random.randint(1, 5)/100)
-	print("\n")
+	print(s)
 	
 def dream():
 	dream_choice_1 = jinput("Do you: \nA: Run \nB: stay \n")

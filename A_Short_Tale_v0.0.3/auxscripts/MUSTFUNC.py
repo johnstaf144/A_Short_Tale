@@ -87,17 +87,14 @@ def kart():
 	kprint("			              '--'               ^ ")
 	
 def pprint(s):
-	time.sleep(0.5)
-	for i in range(len(s)):
-		print(s[:i+1], end="\r")
-		time.sleep(random.randint(1, 10)/100)
-	print("\n")
+	print(s)
 
 def main(player):
 	jinput("Press enter key to start: ")
 	new_game = jinput("New game/load chapter? [new/load]:")
 	if new_game == "new":
 		story_progress = 1.0
+		return player, story_progress
 	elif new_game == "load":
 		path_to_dir = os.path.abspath(".")
 		saves = os.walk(path_to_dir + "/saveData")
@@ -113,13 +110,14 @@ def main(player):
 		game.choices = choices
 		pprint("Welcome back, {}!".format(player.name))
 		time.sleep(1)
+		return player, story_progress
 	else:
 		pprint(required)
 		print("")
 		pprint("Restarting")
 		time.sleep(1)
-		main(player)
-	return player, story_progress
+		player, story_progress = main(player)
+		return player, story_progress
 		
 def death():
 	death = jinput ("You died, would you like to start again... or get up!?: ")
