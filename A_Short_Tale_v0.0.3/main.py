@@ -62,7 +62,7 @@ class Game():
 			quit()
 		while ans not in [chr(65 + i) for i in range(len(args))]:	
 			if "save" not in ans.lower():
-				print(Fore.RED + "Please enter a valid response!")
+				print(Fore.RED + "Please enter a valid response!\n")
 			print(Fore.CYAN + question)
 			for j, i in enumerate(args):
 				print(Fore.GREEN + "{}: {}".format(chr(65 + j), i))	

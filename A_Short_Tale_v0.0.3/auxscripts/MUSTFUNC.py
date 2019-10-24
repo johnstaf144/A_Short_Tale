@@ -127,6 +127,4 @@ def death():
 		quit()
 	elif death == "NOOO" or death == "get up" or death == "NO" or death == "stand up":
 		pass
-		#strength
-		#constitution += 2 
-		#hardy()
+	

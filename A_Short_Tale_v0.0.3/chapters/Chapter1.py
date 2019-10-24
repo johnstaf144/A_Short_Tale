@@ -19,15 +19,18 @@ def chapter1(player):
 						
 	if game.prog <= 0:
 		#Dream
-		pprint("You find yourself wandering a forest, a dream.\n")
+		pprint("""You wake suddenly to the smell of iron and disturbed earth, thick in your nostrils it's cloying scent gives you a steady headache. Instantly
+a shiver runs down your back as you realise that the high pitched noises surrounding you aren't the dregs of your sleepy consciousness, but loud sounds of swords clanging against each other, and a much more terrible sound whining in the background.
+You feel every ounce of you tensed in fear...  .\n""")
 	
-		dream_choice = game.make_choice("Run or stay", "Do you?", "Run", "Stay", secret = ["Wake up"])
+		dream_choice = game.make_choice("Run or stay", "Do you?", "Run", "Stay", secret = ["wake up"])
 		if dream_choice == "A":
-			pprint("You run.\n")
+			pprint("\n You run.\n")
 		elif dream_choice == "B":
-			pprint("You stay.\n")
+			pprint("\n You stay.\n")
 		elif dream_choice == "WAKE UP":
-			pprint("You realise...\n")
+			pprint("\nYou realise...\n")
+			player.premonition += 1
 			
 		time.sleep(1)
 		
@@ -50,11 +53,11 @@ def chapter1(player):
 		
 	if game.prog <= 0.02:
 					
-		choice = game.make_choice("Take hand", "Do you take his hand?", "Yes", "No")
-		if choice == "A":
+		choice_1 = game.make_choice("Take hand", "Do you take his hand?", "Yes", "No")
+		if choice_1 == "A":
 			player.pickup("Hand")
 			time.sleep(1)
-		if choice == "B":
+		if choice_1 == "B":
 			pprint(Fore.GREEN + "You really should have taken his hand... He stabs you and walks away whistling a merry tune.")
 			time.sleep(1)
 			
