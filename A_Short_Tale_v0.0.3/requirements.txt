@@ -8,7 +8,7 @@ pipenv==2018.11.26
 pyparsing==2.4.0
 pypiwin32==223
 python-dateutil==2.8.0
-pywin32==224
+pywin32==301
 six==1.12.0
 virtualenv==16.6.0
 virtualenv-clone==0.5.3
